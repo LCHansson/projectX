@@ -41,7 +41,7 @@ Variabler som kan vara av intresse för konstruktion av index.
     - Grönområde
     - Systembolaget
     - Återvinningscentral/-station
-    - Minnesmärkning
+    - Minnesmärkning, http://www.ksamsok.se/api/
     - Parkering, http://open.stockholm.se/trafik-och-parkering
     - Äldrevård
     - Sjukvård
