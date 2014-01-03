@@ -2,7 +2,9 @@
 #' 
 #' Reads XML-files form Stockholms stad, returns data frame
 #' 
+#' @param file file path
 #' 
+#' @export
 require(XML)
 readStockholmXML <- function(file){
   doc <- xmlParse(f)
