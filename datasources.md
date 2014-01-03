@@ -21,3 +21,4 @@ Riksdagens API | http://data.riksdagen.se/ | [Lite kod](https://github.com/Swedi
 Booli API | http://www.booli.se/api/ | [Request (sålda)](http://www.booli.se/api/explorer#/sold?q=göteborg) | Bostäder: gata, bild, slutpris, etc.
 SVD API | http://www.mashup.se/api/svenska-dagbladet-api-nyhetssokning | - | Sök artiklar, json
 K-samsök | http://www.ksamsok.se/api/ | - | Fornminnen, historisk/k-märkt bebyggelse, etc.
+Systembolaget | http://www.systembolaget.se/Tjanster/Oppna-APIer/ | - | Butiker: adress, coordinat
