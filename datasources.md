@@ -18,8 +18,9 @@ Open Street Map | http://www.openstreetmap.org/ | [OpenStreetMap](http://cran.r-
 Google Maps API | - | [RgoogleMaps](http://cran.r-project.org/web/packages/RgoogleMaps/index.html), [ggmap](http://cran.r-project.org/web/packages/ggmap/index.html) | -
 Valstatistik | http://www.val.se/val/val2010/statistik/ | - | Ledamöter, valresultat, kommun, landsting etc. 
 Riksdagens API | http://data.riksdagen.se/ | [Lite kod](https://github.com/SwedishPensionsAgency/r-for-nyborjare/blob/master/code/swedish-parliament.R) | Dokument, ledamöter, voteringar, anföranden, etc.
-Booli API | http://www.booli.se/api/ | [Request (sålda)](http://www.booli.se/api/explorer#/sold?q=göteborg) | Bostäder: gata, bild, slutpris, etc.
+Booli API | http://www.booli.se/api/ | [Request (sålda)](http://www.booli.se/api/explorer#/sold?q=göteborg) | Orimliga villkor - blir svårt att använda. Innehåller bostäder: gata, bild, slutpris, etc.
 SVD API | http://www.mashup.se/api/svenska-dagbladet-api-nyhetssokning | - | Sök artiklar, json
 K-samsök | http://www.ksamsok.se/api/ | - | Fornminnen, historisk/k-märkt bebyggelse, etc.
 Systembolaget | http://www.systembolaget.se/Tjanster/Oppna-APIer/ | - | Butiker: adress, coordinat
 VISS Vatteninformationssystem | http://www.viss.lansstyrelsen.se/API | - | -
+SCB Församlingar | http://www.scb.se/sv_/Hitta-statistik/Regional-statistik-och-kartor/Regionala-indelningar/Forsamlingar/ | - | -
