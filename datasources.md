@@ -48,6 +48,8 @@ Variabler som kan vara av intresse för konstruktion av index.
     - Apotek
     - Bibliotek
     - Mataffär
+    - Butiker
+    - Bio
 - Bygglov
 - Trafikplanering
 - Miljövariabler
