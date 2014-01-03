@@ -1,7 +1,7 @@
 ÖPPNA STOCKHOLM
 ===============
 
- Datakälla | Adress | R-Paket | Kommentar 
+ Datakälla | Adress | R-Paket / exempel | Kommentar 
 --------|------|-----|-------|
 Geodataportalen | http://geodataportalen.stockholm.se/Geodataportalen/ | - | Metadata för ett stort antal API:er och andra källor från Open Stockholm
 Generell API-dokumentation | http://api.stockholm.se/dokumentation/ | - | Länkar och dokumentation för flera API-tjänster
@@ -18,4 +18,4 @@ Open Street Map | http://www.openstreetmap.org/ | [OpenStreetMap](http://cran.r-
 Google Maps API | - | [RgoogleMaps](http://cran.r-project.org/web/packages/RgoogleMaps/index.html), [ggmap](http://cran.r-project.org/web/packages/ggmap/index.html) | -
 Valstatistik | http://www.val.se/val/val2010/statistik/ | - | Ledamöter, valresultat, kommun, landsting etc. 
 Riksdagens API | http://data.riksdagen.se/ | [Lite kod](https://github.com/SwedishPensionsAgency/r-for-nyborjare/blob/master/code/swedish-parliament.R) | Dokument, ledamöter, voteringar, anföranden, etc.
-Booli | http://www.booli.se/api/ | - | Bostadsannonser, bilder, avslutade?
+Booli | http://www.booli.se/api/ | [Request (sålda)](http://www.booli.se/api/explorer#/sold?q=göteborg) | Bostäder: gata, bild, slutpris, etc.
