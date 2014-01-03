@@ -24,3 +24,28 @@ K-samsök | http://www.ksamsok.se/api/ | - | Fornminnen, historisk/k-märkt beby
 Systembolaget | http://www.systembolaget.se/Tjanster/Oppna-APIer/ | - | Butiker: adress, coordinat
 VISS Vatteninformationssystem | http://www.viss.lansstyrelsen.se/API | - | -
 SCB Församlingar | [Statistik](http://www.scb.se/sv_/Hitta-statistik/Statistik-efter-amne/Befolkning/Befolkningens-sammansattning/Befolkningsstatistik/25788/25795/), [Koder](http://www.scb.se/sv_/Hitta-statistik/Regional-statistik-och-kartor/Regionala-indelningar/Forsamlingar/) | - | -
+
+
+## Data på gatunivå
+
+- Restider: SL, SJ
+- Närhet till
+    - Restaurang (yelp)
+    - Idrottsanläggning
+    - Park
+    - Bad
+    - Skola
+    - Dagis
+    - Grönområde
+    - Systembolaget
+    - Återvinningscentral/-station
+    - Minnesmärkning
+- Miljövariabler
+- Idrottsföreningar
+- Brottslighet
+- Sammansättning av bostäder (villa, bostadsrätt, hyresrätt)
+- Demografisk sammansättning
+- Etnicitet
+- Valstatistik
+- Inkomst
+
