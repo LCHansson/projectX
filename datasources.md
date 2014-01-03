@@ -43,6 +43,9 @@ Variabler som kan vara av intresse för konstruktion av index.
     - Återvinningscentral/-station
     - Minnesmärkning
     - Parkering
+    - Äldrevård
+    - Sjukvård
+    - Apotek
 - Bygglov
 - Trafikplanering
 - Miljövariabler
