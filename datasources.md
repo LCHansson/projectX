@@ -1,7 +1,7 @@
 ÖPPNA STOCKHOLM
 ===============
 
- Datakälla | Adress | R-Paket | Kommentar
+ Datakälla | Adress | R-Paket | Kommentar 
 --------|------|-----|-------|
 Geodataportalen | http://geodataportalen.stockholm.se/Geodataportalen/ | - | Metadata för ett stort antal API:er och andra källor från Open Stockholm
 Generell API-dokumentation | http://api.stockholm.se/dokumentation/ | - | Länkar och dokumentation för flera API-tjänster
@@ -12,4 +12,7 @@ Miljödata | http://open.stockholm.se/miljodata | - | -
 Platsdatabasen | http://api.stockholm.se/PlaceService | - | -
 Trafik och parkering | http://open.stockholm.se/trafik-och-parkering | - | -
 Verksamheter och nöjdundersökningar | http://open.stockholm.se/verksamheter-och-nojdhetsundersokningar | - | -
-
+Kolada | http://www.kolada.se/portal.php?page=index/api | - | Kommun, landsting
+SCB Statistikdatabasen API | http://www.scb.se/api/ | [rSCB](https://github.com/LCHansson/rSCB) | -
+Open Street Map | http://www.openstreetmap.org/ | [OpenStreetMap](http://cran.r-project.org/web/packages/OpenStreetMap/index.html), [ggmap](http://cran.r-project.org/web/packages/ggmap/index.html) | -
+Google Maps API | - | [RgoogleMaps](http://cran.r-project.org/web/packages/RgoogleMaps/index.html), [ggmap](http://cran.r-project.org/web/packages/ggmap/index.html) | -
