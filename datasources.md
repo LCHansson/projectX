@@ -66,3 +66,9 @@ Variabler som kan vara av intresse för konstruktion av index.
 - Elleverantörer
 - Internetleverantörer http://e-tjanster.pts.se/internet/api
 - Diarier http://diarium.lansstyrelsen.se/default.aspx http://www.diarium.sll.se/WebDiary/index.htm
+
+### Kommentarer
+Data för närmaste skolor, dagis, bibliotek, park, bad etc. finns i enhets-API:t på api.stockholm.se. För att vi ska kunna hitta de närmaste av varje behöver vi göra följande:
+1. Hämta geografiska koordinater i WGS84 för en adress från LvWS-API:t
+2. Konvertera dessa till RT90 2.5 gon V via LvWS-API:t (OBS! X-koordinaten från LvWS blir här Y-koordinaten och vice versa)
+3. Använd koordinaterna i RT90 för att hämta data om närmaste [x] från Enhets-API:t
