@@ -30,7 +30,7 @@ SCB Församlingar | [Statistik](http://www.scb.se/sv_/Hitta-statistik/Statistik-
 
 Variabler som kan vara av intresse för konstruktion av index.
 
-- Restider: SL, SJ
+- Restider: SL, SJ http://www.trafiklab.se/api
 - Närhet till
     - Restaurang (yelp)
     - Idrottsanläggning
@@ -50,14 +50,17 @@ Variabler som kan vara av intresse för konstruktion av index.
     - Mataffär
     - Butiker
     - Bio
-- Bygglov
-- Trafikplanering
-- Miljövariabler
-- Idrottsföreningar
+- Bygglov 
+- Trafikplanering 
+- Miljövariabler http://open.stockholm.se/miljodata http://www.stralsakerhetsmyndigheten.se/Yrkesverksam/Miljoovervakning/Sokbara-miljodata/
+- Idrottsföreningar http://booking.stockholm.se/ http://booking.stockholm.se/SearchAss/SearchAss.aspx
 - Brottslighet
 - Sammansättning av bostäder (villa, bostadsrätt, hyresrätt)
-- Demografisk sammansättning
+- Demografisk sammansättning http://open.stockholm.se/befolkningsdata getAllStockholmXML()
 - Etnicitet
 - Valstatistik
-- Inkomst
-
+- Inkomst 
+- Stockholm e-arkiv https://service.stockholm.se/Open/ArchiveSearch/Pages/SearchPage.aspx
+- Elleverantörer
+- Internetleverantörer http://e-tjanster.pts.se/internet/api
+- Diarier http://diarium.lansstyrelsen.se/default.aspx http://www.diarium.sll.se/WebDiary/index.htm
