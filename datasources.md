@@ -20,3 +20,4 @@ Valstatistik | http://www.val.se/val/val2010/statistik/ | - | Ledamöter, valres
 Riksdagens API | http://data.riksdagen.se/ | [Lite kod](https://github.com/SwedishPensionsAgency/r-for-nyborjare/blob/master/code/swedish-parliament.R) | Dokument, ledamöter, voteringar, anföranden, etc.
 Booli API | http://www.booli.se/api/ | [Request (sålda)](http://www.booli.se/api/explorer#/sold?q=göteborg) | Bostäder: gata, bild, slutpris, etc.
 SVD API | http://www.mashup.se/api/svenska-dagbladet-api-nyhetssokning | - | Sök artiklar, json
+K-samsök | http://www.ksamsok.se/api/ | - | Fornminnen, historisk/k-märkt bebyggelse, etc.
