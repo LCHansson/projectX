@@ -24,7 +24,7 @@ K-samsök | http://www.ksamsok.se/api/ | - | Fornminnen, historisk/k-märkt beby
 Systembolaget | http://www.systembolaget.se/Tjanster/Oppna-APIer/ | - | Butiker: adress, coordinat
 VISS Vatteninformationssystem | http://www.viss.lansstyrelsen.se/API | - | -
 SCB Församlingar | [Statistik](http://www.scb.se/sv_/Hitta-statistik/Statistik-efter-amne/Befolkning/Befolkningens-sammansattning/Befolkningsstatistik/25788/25795/), [Koder](http://www.scb.se/sv_/Hitta-statistik/Regional-statistik-och-kartor/Regionala-indelningar/Forsamlingar/) | - | -
-
+Bistånd i Sverige | http://openaid.se/ | - | -
 
 ## Data på gatunivå
 
@@ -49,16 +49,18 @@ Variabler som kan vara av intresse för konstruktion av index.
     - Bibliotek
     - Mataffär
     - Butiker
-    - Bio
+    - Bio http://www.bioprogrammet.nu/biograflista.asp?stadnr=13
+    - Bankomat
 - Bygglov http://insynsbk.stockholm.se/Byggochplantjansten/Pagaende-planarbete/PagaendePlanarbete/
 - Trafikplanering 
 - Trafik http://trafiken.nu/Stockholm/
 - Miljövariabler http://open.stockholm.se/miljodata http://www.stralsakerhetsmyndigheten.se/Yrkesverksam/Miljoovervakning/Sokbara-miljodata/
 - Idrottsföreningar http://booking.stockholm.se/ http://booking.stockholm.se/SearchAss/SearchAss.aspx
+- Företag och föreningar http://www.bolagsverket.se/om/oss/etjanster/statistik/statistik-1.3538
 - Brottslighet http://polisen.se/Stockholms_lan/Aktuellt/Handelser/ http://statistik.bra.se/solwebb/action/start
 - Polisen Twitter: https://twitter.com/polisen_sthlm http://polisen.se/Stockholms_lan/Aktuellt/Sociala-medier/Sa-arbetar-Polisen-med-sociala-medier/Komplettering/Stockholm/Sociala-medier-i-Stockholm/ 
 - Sammansättning av bostäder (villa, bostadsrätt, hyresrätt)
-- Demografisk sammansättning http://open.stockholm.se/befolkningsdata getAllStockholmXML()
+- Demografisk sammansättning http://open.stockholm.se/befolkningsdata getAllStockholmXML() http://statistikomstockholm.se/index.php/detaljerad-statistik/arsbokstabeller-befolkning/arsbokstabeller-befolkning-2
 - Etnicitet SCB eller kanske http://open.stockholm.se/befolkningsdata getAllStockholmXML()
 - Valstatistik http://www.val.se/val/val2010/statistik/index.html
 - Inkomst http://open.stockholm.se/befolkningsdata getAllStockholmXML() (Medelinkomst per stadsdelsnämnd)
