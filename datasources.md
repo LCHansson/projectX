@@ -18,3 +18,4 @@ Open Street Map | http://www.openstreetmap.org/ | [OpenStreetMap](http://cran.r-
 Google Maps API | - | [RgoogleMaps](http://cran.r-project.org/web/packages/RgoogleMaps/index.html), [ggmap](http://cran.r-project.org/web/packages/ggmap/index.html) | -
 Valstatistik | http://www.val.se/val/val2010/statistik/ | - | Ledamöter, valresultat, kommun, landsting etc. 
 Riksdagens API | http://data.riksdagen.se/ | [Lite kod](https://github.com/SwedishPensionsAgency/r-for-nyborjare/blob/master/code/swedish-parliament.R) | Dokument, ledamöter, voteringar, anföranden, etc.
+Booli | http://www.booli.se/api/ | - | Bostadsannonser, bilder, avslutade?
