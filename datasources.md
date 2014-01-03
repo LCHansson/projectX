@@ -42,7 +42,7 @@ Variabler som kan vara av intresse för konstruktion av index.
     - Systembolaget
     - Återvinningscentral/-station
     - Minnesmärkning
-    - Parkering
+    - Parkering, http://open.stockholm.se/trafik-och-parkering
     - Äldrevård
     - Sjukvård
     - Apotek
