@@ -46,6 +46,7 @@ Variabler som kan vara av intresse för konstruktion av index.
     - Äldrevård
     - Sjukvård
     - Apotek
+    - Bibliotek
 - Bygglov
 - Trafikplanering
 - Miljövariabler
