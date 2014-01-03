@@ -42,7 +42,7 @@ Variabler som kan vara av intresse för konstruktion av index.
     - Systembolaget, http://www.systembolaget.se/Tjanster/Oppna-APIer/
     - Återvinningscentral/-station
     - Minnesmärkning, http://www.ksamsok.se/api/
-    - Parkering, http://open.stockholm.se/trafik-och-parkering
+    - Parkering, http://openstreetgs.stockholm.se/Home/Parking
     - Äldrevård
     - Sjukvård
     - Apotek
