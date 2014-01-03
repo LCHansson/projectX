@@ -50,16 +50,18 @@ Variabler som kan vara av intresse för konstruktion av index.
     - Mataffär
     - Butiker
     - Bio
-- Bygglov 
+- Bygglov http://insynsbk.stockholm.se/Byggochplantjansten/Pagaende-planarbete/PagaendePlanarbete/
 - Trafikplanering 
+- Trafik http://trafiken.nu/Stockholm/
 - Miljövariabler http://open.stockholm.se/miljodata http://www.stralsakerhetsmyndigheten.se/Yrkesverksam/Miljoovervakning/Sokbara-miljodata/
 - Idrottsföreningar http://booking.stockholm.se/ http://booking.stockholm.se/SearchAss/SearchAss.aspx
-- Brottslighet
+- Brottslighet http://polisen.se/Stockholms_lan/Aktuellt/Handelser/ http://statistik.bra.se/solwebb/action/start
+- Polisen Twitter: https://twitter.com/polisen_sthlm http://polisen.se/Stockholms_lan/Aktuellt/Sociala-medier/Sa-arbetar-Polisen-med-sociala-medier/Komplettering/Stockholm/Sociala-medier-i-Stockholm/ 
 - Sammansättning av bostäder (villa, bostadsrätt, hyresrätt)
 - Demografisk sammansättning http://open.stockholm.se/befolkningsdata getAllStockholmXML()
-- Etnicitet
-- Valstatistik
-- Inkomst 
+- Etnicitet SCB eller kanske http://open.stockholm.se/befolkningsdata getAllStockholmXML()
+- Valstatistik http://www.val.se/val/val2010/statistik/index.html
+- Inkomst http://open.stockholm.se/befolkningsdata getAllStockholmXML() (Medelinkomst per stadsdelsnämnd)
 - Stockholm e-arkiv https://service.stockholm.se/Open/ArchiveSearch/Pages/SearchPage.aspx
 - Elleverantörer
 - Internetleverantörer http://e-tjanster.pts.se/internet/api
