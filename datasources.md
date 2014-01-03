@@ -28,6 +28,8 @@ SCB Församlingar | [Statistik](http://www.scb.se/sv_/Hitta-statistik/Statistik-
 
 ## Data på gatunivå
 
+Variabler som kan vara av intresse för konstruktion av index.
+
 - Restider: SL, SJ
 - Närhet till
     - Restaurang (yelp)
@@ -40,6 +42,9 @@ SCB Församlingar | [Statistik](http://www.scb.se/sv_/Hitta-statistik/Statistik-
     - Systembolaget
     - Återvinningscentral/-station
     - Minnesmärkning
+    - Parkering
+- Bygglov
+- Trafikplanering
 - Miljövariabler
 - Idrottsföreningar
 - Brottslighet
