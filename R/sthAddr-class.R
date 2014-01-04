@@ -11,7 +11,7 @@ sthAddr <- setRefClass(
       
       .coords <- getCoords(.self$address$WKT)
       
-      .self$RT90 <- .coords$RT90
+      .self$RT90 <- round(.coords$RT90)
       .self$WGS84 <- .coords$WGS84
       
     },
