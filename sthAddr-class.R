@@ -1,20 +1,27 @@
 sthAddr <- setRefClass(
   "sthAddr",
   fields = list(
-    address = "list",
-    coords = "list"
+    address = "data.frame",
+    RT90 = "numeric",
+    WGS84 = "numeric"
   ),
   methods = list(
     initialize = function(street, number) {
-      address <<- getAddress(street, number)
+      .self$address <- getAddress(street, number)
       
-      coords <<- getCoords(street, number)
+      .coords <- getCoords(.self$address$WKT)
+      
+      .self$RT90 <- .coords$RT90
+      .self$WGS84 <- .coords$WGS84
+      
     },
     getAddress = function(street, number) {
-      addresses <<- LvWS::GetAddresses(streetName=street, streetNumPattern=number)
+      addresses <- LvWS::GetAddresses(streetName=street, streetNumPattern=number)
+      return(addresses)
     },
-    getCoords = function(street, number) {
-      coords <<- GetCoords(addresses$WKT)
+    getCoords = function(WKT) {
+      .coords <- GetCoords(WKT)
+      return(.coords)
     }
   )
 )
