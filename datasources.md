@@ -51,6 +51,7 @@ Variabler som kan vara av intresse för konstruktion av index.
     - Butiker
     - Bio http://www.bioprogrammet.nu/biograflista.asp?stadnr=13
     - Bankomat
+- Invånare (räkna antal per gata): birthday.se
 - Bygglov http://insynsbk.stockholm.se/Byggochplantjansten/Pagaende-planarbete/PagaendePlanarbete/
 - Trafikplanering 
 - Trafik http://trafiken.nu/Stockholm/
