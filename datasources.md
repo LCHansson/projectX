@@ -25,6 +25,7 @@ Systembolaget | http://www.systembolaget.se/Tjanster/Oppna-APIer/ | - | Butiker:
 VISS Vatteninformationssystem | http://www.viss.lansstyrelsen.se/API | - | -
 SCB Församlingar | [Statistik](http://www.scb.se/sv_/Hitta-statistik/Statistik-efter-amne/Befolkning/Befolkningens-sammansattning/Befolkningsstatistik/25788/25795/), [Koder](http://www.scb.se/sv_/Hitta-statistik/Regional-statistik-och-kartor/Regionala-indelningar/Forsamlingar/) | - | -
 Bistånd i Sverige | http://openaid.se/ | - | -
+API-samlingar | http://www.opendata.se http://apikatalogen.se/ | - | -
 
 ## Data på gatunivå
 
@@ -32,7 +33,7 @@ Variabler som kan vara av intresse för konstruktion av index.
 
 - Restider: SL, SJ http://www.trafiklab.se/api
 - Närhet till
-    - Restaurang (yelp)
+    - Restaurang (yelp) http://www.tedvalentin.com/2009/06/ett-api-for-mina-kartsajter.html
     - Idrottsanläggning
     - Park
     - Bad
@@ -47,18 +48,18 @@ Variabler som kan vara av intresse för konstruktion av index.
     - Sjukvård
     - Apotek
     - Bibliotek
-    - Mataffär
-    - Butiker
+    - Mataffär https://github.com/svendahlstrand/ica-api
+    - Butiker http://www.tedvalentin.com/2009/06/ett-api-for-mina-kartsajter.html
     - Bio http://www.bioprogrammet.nu/biograflista.asp?stadnr=13
     - Bankomat
 - Invånare (räkna antal per gata): http://birthday.se, http://eniro.se, http://hitta.se
 - Bygglov http://insynsbk.stockholm.se/Byggochplantjansten/Pagaende-planarbete/PagaendePlanarbete/
 - Trafikplanering 
 - Trafik http://trafiken.nu/Stockholm/
-- Miljövariabler http://open.stockholm.se/miljodata http://www.stralsakerhetsmyndigheten.se/Yrkesverksam/Miljoovervakning/Sokbara-miljodata/
+- Miljövariabler http://open.stockholm.se/miljodata http://www.stralsakerhetsmyndigheten.se/Yrkesverksam/Miljoovervakning/Sokbara-miljodata/ http://www.trafiklab.se/api/emissionquantity
 - Idrottsföreningar http://booking.stockholm.se/ http://booking.stockholm.se/SearchAss/SearchAss.aspx
 - Företag och föreningar http://www.bolagsverket.se/om/oss/etjanster/statistik/statistik-1.3538
-- Brottslighet http://polisen.se/Stockholms_lan/Aktuellt/Handelser/ http://statistik.bra.se/solwebb/action/start
+- Brottslighet http://brottsplatskartan.se/ http://polisen.se/Stockholms_lan/Aktuellt/Handelser/ http://statistik.bra.se/solwebb/action/start
 - Polisen Twitter: https://twitter.com/polisen_sthlm http://polisen.se/Stockholms_lan/Aktuellt/Sociala-medier/Sa-arbetar-Polisen-med-sociala-medier/Komplettering/Stockholm/Sociala-medier-i-Stockholm/ 
 - Sammansättning av bostäder (villa, bostadsrätt, hyresrätt)
 - Demografisk sammansättning http://open.stockholm.se/befolkningsdata getAllStockholmXML() http://statistikomstockholm.se/index.php/detaljerad-statistik/arsbokstabeller-befolkning/arsbokstabeller-befolkning-2
@@ -66,9 +67,10 @@ Variabler som kan vara av intresse för konstruktion av index.
 - Valstatistik http://www.val.se/val/val2010/statistik/index.html
 - Inkomst http://open.stockholm.se/befolkningsdata getAllStockholmXML() (Medelinkomst per stadsdelsnämnd)
 - Stockholm e-arkiv https://service.stockholm.se/Open/ArchiveSearch/Pages/SearchPage.aspx
-- Elleverantörer
+- Elleverantörer http://elområden.se/
 - Internetleverantörer http://e-tjanster.pts.se/internet/api
 - Diarier http://diarium.lansstyrelsen.se/default.aspx http://www.diarium.sll.se/WebDiary/index.htm
+- http://www.gis.lst.se/lstgis/
 
 ### Kommentarer
 Data för närmaste skolor, dagis, bibliotek, park, bad etc. finns i enhets-API:t på api.stockholm.se. För att vi ska kunna hitta de närmaste av varje behöver vi göra följande:
