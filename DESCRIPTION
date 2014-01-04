@@ -1,0 +1,14 @@
+Package: projectX
+Type: Package
+Title: projectX
+Version: 0.1
+Date: 2014-01-04
+Author: Thomas Reinholdsson, Cédric Perriard, Love Hansson
+Maintainer: Thomas Reinholdsson <reinholdsson@gmail.com>
+Description: ...
+License: AGPLv3
+Depends:
+    httr,
+    XML,
+    RJSONIO,
+    plyr
