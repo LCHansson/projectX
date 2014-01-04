@@ -11,7 +11,7 @@ sthAddr <- setRefClass(
       coords <<- getCoords(street, number)
     },
     getAddress = function(street, number) {
-      NULL
+      addresses <<- LvWS::GetAddresses(streetName=street, streetNumPattern=number)
     },
     getCoords = function(street, number) {
       NULL
