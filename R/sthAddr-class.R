@@ -20,22 +20,25 @@ sthAddr <- setRefClass(
     },
     getAddress = function(street, number) {
       #browser()
-      addresses <- LvWS::GetAddresses(streetName=street, streetNumPattern=number)
+      addresses <- OpenSth::GetAddresses(streetName=street, streetNumPattern=number)
       if (nrow(addresses) == 0){
-      	addresses <- LvWS::GetAddresses(streetName=street, 
+      	addresses <- OpenSth::GetAddresses(streetName=street, 
       									streetNumPattern=ifelse(class(number) %in% c("integer","double", "numeric"), 
       															number-1, 
       															"*"))
       }
       
       if (nrow(addresses) == 0){
-      	addresses <- LvWS::GetAddresses(streetName=street, streetNumPattern="*")
+      	addresses <- OpenSth::GetAddresses(streetName=street, streetNumPattern="*")
       }
       return(addresses[1,])
     },
     getCoords = function(WKT) {
       .coords <- GetCoords(WKT)
       return(.coords)
+    },
+    getParkingPlaces = function() {
+      lvws_get_parking_places(streetName = .self$address$StreetName)
     }
   )
 )
