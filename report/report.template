@@ -1,6 +1,13 @@
 {{street}} {{number}}
 =====================
 
+<%=
+library(projectX)
+library(LvWS)
+obj <- sthAddr("{{street}}", "{{number}}")
+%>
+
 Detta är en rapport som visar lite cool gatuinfo.
 
 {{> street_info.brew }}
+{{> schools.brew }}
