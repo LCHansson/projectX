@@ -1,12 +1,15 @@
 sthAddr <- setRefClass(
   "sthAddr",
   fields = list(
+    name = "character",
     address = "data.frame",
     RT90 = "numeric",
     WGS84 = "numeric"
   ),
   methods = list(
     initialize = function(street, number) {
+      .self$name <- "Unnamed STH Address object"
+      
       .self$address <- getAddress(street, number)
       
       .coords <- getCoords(.self$address$WKT)
