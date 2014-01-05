@@ -1,3 +1,4 @@
 export(getAllStockholmXML)
 export(readStockholmXML)
 export(sthAddr)
+export(extractUnitData)
