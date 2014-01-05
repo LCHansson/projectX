@@ -34,6 +34,10 @@ allthedata <- rbind(a,b)
 i <- 51; GetRTDistance(jag$RT90, c(allthedata[i,"RT90.northing"], allthedata[i,"RT90.easting"]))
 
 
+#### EXEMPEL: Restider från en gatuadress till T-Centralen ####
+jag <- sthAddr("Sveavägen", 126)
+
+snittrestid <- GetTravelTime(jag$WGS84)
 
 
 #### TESTKOD ####
