@@ -1,4 +1,5 @@
 require(OpenSth)
+require(rSL)
 
 #### EXEMPEL: Datamining i Stockholms enhets-API ####
 ## Skapa ett adressobjekt
@@ -34,6 +35,10 @@ allthedata <- rbind(a,b)
 i <- 51; GetRTDistance(jag$RT90, c(allthedata[i,"RT90.northing"], allthedata[i,"RT90.easting"]))
 
 
+#### EXEMPEL: Restider från en gatuadress till T-Centralen ####
+jag <- sthAddr("Sveavägen", 126)
+
+snittrestid <- travelTimeFromPos(jag$WGS84)
 
 
 #### TESTKOD ####
