@@ -1,0 +1,8 @@
+<%=
+library(projectX)
+library(LvWS)
+a <- sthAddr("{{street}}", "{{number}}") 
+x <- a$address
+%>
+
+Gatan ligger i <%= x$Municipality %> och har postnummer <%= x$PostalCode %>.

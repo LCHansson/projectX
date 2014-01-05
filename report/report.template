@@ -1,0 +1,6 @@
+{{street}} {{number}}
+=====================
+
+Detta är en rapport som visar lite cool gatuinfo.
+
+{{> street_info.brew }}
