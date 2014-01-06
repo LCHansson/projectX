@@ -1,0 +1,4 @@
+<%=
+x <- obj$getClosestSchools(5)
+x[, c("name", "street", "distance")]
+%>

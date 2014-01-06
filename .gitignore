@@ -22,3 +22,5 @@
 
 # Manpages
 *.Rd
+
+output.tex

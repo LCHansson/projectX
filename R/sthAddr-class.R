@@ -47,6 +47,43 @@ sthAddr <- setRefClass(
       })
       rownames(x) <- NULL
       return(x)
+    },
+    getPreschoolsData = function(year = 2013, ...) {
+    	
+    	x <- GetNearestServiceUnit(1, .self$RT90, ...)
+    	
+    	# TODO: Later on we can skip the step below,
+    	# 	when we know which variables to use
+    	x <- x[, c(
+    		# Info
+    		"Id",
+    		"Name",
+    		"Attributes.ContactPersonEmailAddress.Value",
+    		"Attributes.ContactPersonName.Value",
+    		"Attributes.EmailAddress.Value",
+    		"Attributes.Description.Value",
+    		"Attributes.ShortDescription.Value",
+    		"Attributes.OrganizationalForm.Value",
+    		"Attributes.PostalCode.Value",
+    		"Attributes.StreetAddress.Value",
+    		"Attributes.Url.Value",
+    		"GeographicalAreas.Name",
+    		
+    		# Measures
+    		atr("Attributes.PreSchoolNumberOfChildrenPerYearWorker"),
+    		atr("Attributes.PreSchoolNumberOfChildren"),
+    		atr("Attributes.PreSchoolShareOfTeachersWithUniversityEducation"),
+    		atr("Attributes.SvarsFrekvensForskola%s", year),
+    		atr("Attributes.PreschoolForm%sCuriosity", year),
+    		atr("Attributes.PreschoolForm%sSafety", year),
+    		atr("Attributes.PreschoolForm%sSocial", year),
+    		atr("Attributes.PreschoolForm%sResponsibility", year),
+    		atr("Attributes.PreschoolForm%sAspects", year),
+    		atr("Attributes.PreschoolForm%sHappiness", year),
+    		atr("Attributes.PreschoolForm%sRecommendation", year),
+    		atr("Attributes.PreschoolForm%santalSvarande", year)
+    	)]
+    	return(x)
     }
   )
 )
