@@ -64,6 +64,7 @@ Vi har just nu: Närhet till skolor och dagis; kvalitetsnyckeltal för skolor; n
 
 | Faktor | Normalisering | Vikt |
 | ------ | ------------- | ---- |
+<<<<<<< HEAD
 | Avstånd till närmaste grundskola (m) |  | 0.15 |
 | Avstånd till närmaste gymnasium (m) |  | 0.15 |
 | Snittavstånd till tre närmaste dagis (m) |  | 0.15 |
@@ -71,6 +72,15 @@ Vi har just nu: Närhet till skolor och dagis; kvalitetsnyckeltal för skolor; n
 | Avstånd till närmaste fest- och möteslokal (m) |  | 0.05 |
 | Avstånd till närmaste sjukhus (m) |  | 0.2 |
 | Avstånd till närmaste vårdcentral (m) |  | 0.2 |
+=======
+| Avstånd till närmaste grundskola (m) |  | 0. |
+| Avstånd till närmaste gymnasium (m) |  | 0. |
+| Snittavstånd till tre närmaste dagis (m) |  | 0. |
+| Avstånd till närmaste fritids (m) |  | 0 |
+| Avstånd till närmaste fest- och möteslokal (m) |  | 0. |
+| Avstånd till närmaste sjukhus (m) |  | 0. |
+| Avstånd till närmaste vårdcentral (m) |  | 0. |
+>>>>>>> a9b2b640cf69e5f56c5d689df322a3d2d9b755af
 
 
 ### 5 - Andra index
