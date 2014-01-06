@@ -92,7 +92,7 @@ sthAddr <- setRefClass(
       # TODO: compute stuff
       
       index <- list(
-        distance = 59
+        distance = 59,
         quality = 37,
         cost = NULL,
         quantity = NULL
