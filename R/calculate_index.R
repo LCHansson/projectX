@@ -8,7 +8,9 @@ blki <- function(street, number) {
 	address <- sthAddr(street, number)
   
   # 1. Miljöindex: ENV_IX
-  env_ix <- 50 # We leave this constant for now...
+  envdata <- 50 # We leave this constant for now...
+  
+  env_ix <- normalizeEnvironmentalData(envdata)
   
   # 2. Restidsindex: RT_IX
   traveltime <- travelTimeFromPos(address$WGS84)
