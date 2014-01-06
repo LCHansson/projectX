@@ -100,6 +100,43 @@ sthAddr <- setRefClass(
       
       return(index)
     },
+    getIndex_Fritids = function(...) {
+      # Get data
+      data <- GetNearestServiceUnit("081488a6-d541-4704-8d07-8d38ee435dd3", .self$RT90, n=1, groups=FALSE)
+      
+      # Get distance
+      data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
+        GetRTDistance(.self$RT90, c(as.integer(data[i,"GeographicalPosition.X"]), as.integer(data[i,"GeographicalPosition.Y"])))
+      })
+      
+      index <- 100 - (mean(data$GeographicalDistance) / 1000) * 100
+      
+      return(index)
+    },
+    getIndex_Festlokal = function(...) {
+      # Get data
+      data <- GetNearestServiceUnit("ef2defe3-e53f-4669-9b19-3d45b33129ed", .self$RT90, n=1, groups=FALSE)
+      
+      # Get distance
+      data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
+        GetRTDistance(.self$RT90, c(as.integer(data[i,"GeographicalPosition.X"]), as.integer(data[i,"GeographicalPosition.Y"])))
+      })
+      
+      index <- 100 - (mean(data$GeographicalDistance) / 1000) * 100
+      
+      return(index)
+    },
+    getIndex_Sjukhus = function(...) {
+      # Get data
+      index <- 0      
+      return(index)
+    },
+    getIndex_Vardcentral = function(...) {
+      # Get data
+      index <- 0
+      
+      return(index)
+    },
     
     getIndex_Traveltime = function(...) {
       # Get data
@@ -109,6 +146,7 @@ sthAddr <- setRefClass(
       
       return(index)
     },
+    
     getIndex_Library = function(...) {
       # Get data
       data <- GetNearestServiceUnit("9ff1c3b5-f2e9-45b4-a478-caa09d923417", .self$RT90, n=1, groups=FALSE)
