@@ -73,11 +73,17 @@ Vi har just nu: Närhet till skolor och dagis; kvalitetsnyckeltal för skolor; n
 | ------ | ------------- | ---- |
 | Avstånd till närmaste grundskola (m) | 100 - (avst/1000)*100 | 0.3 |
 | Avstånd till närmaste gymnasium (m) | 100 - (avst/3000)*100 | 0.3 |
-| Snittavstånd till tre närmaste dagis (m) | 100 - (avst/500)*100 | 0.3 |
+| Medel avstånd och omdöme för tre närmaste dagis (m) | medel(((500 - avstånd) / 500) * rekommendation / 100) <br>-om rek saknas så ges värde 75<br>-om avstånd över 500 => 500| 0.3 |
 | Avstånd till närmaste fritids (m) | 100 - (avst/1000)*100 | 0.05 |
 | Avstånd till närmaste fest- och möteslokal (m) | 100 - (avst/1000)*100 | 0.05 |
 | Avstånd till närmaste sjukhus (m) | 100 - (avst/3000)*100 | 0 |
 | Avstånd till närmaste vårdcentral (m) | 100 - (avst/1000)*100 | 0 |
+
+*Vi skulle även kunna lägga till "Övrig utbildning" för skolverksamhet som inte omfattas av ovan.*
+
+För indelningar se:
+- http://api.stockholm.se/ServiceGuideService/ServiceUnitTypeGroups?apiKey=0eb1055a722f4b65986f545cb67bd44e
+- http://api.stockholm.se/ServiceGuideService/ServiceUnitTypes?apiKey=0eb1055a722f4b65986f545cb67bd44e
 
 
 ### 5 - Andra index
