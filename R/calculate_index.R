@@ -6,58 +6,96 @@
  
 blki <- function(addrObj) {
 	## Miljöindex
-  env_ix <- 0
+  env_idx <- 0
   env_wt <- 0
   
   ## Restidsindex
   # Index components (normalised)
-  ttime <- addrObj$getIndex_Traveltime()
-  plots_distance <- 0
-  plots_number <- 0
+  rt_data <- data.frame(
+    # Name the components to the partial index
+    component = c("ttime","plots_distance","plots_number"),
+    # Long names of the components
+    longame = c("Restid, Centralen", "Avstånd, parkeringsplats (X)","Antal parkeringsplatser inom X m"),
+    # Name the partial index which is composed of these components
+    partial_idx = "rt_idx",
+    # Find the values of the components
+    value = c(
+      addrObj$getIndex_Traveltime(),
+      0,
+      0
+    ),
+    # Define the weights of the components
+    partial_weight = c(1,0,0),
+    is_partialindex = FALSE,
+    
+    stringsAsFactors = FALSE
+  )
   
-  rt_partial_weights <- c(1,0,0)
+  indexdata <- rbind(rt_data, c(
+    "rt_idx", "Restidsindex", "rt_idx", sum(rt_data$value*rt_data$partial_weight, na.rm=TRUE), 0.33, TRUE
+  ))
   
-  # Calculate partial index from components
-  rt_ix <- sum(c(ttime, plots_distance, plots_number) * rt_partial_weights)
-  rt_wt <- 0.33
   
   ## Fritidsindex
-  # Index components (normalised)
-  lib <- addrObj$getIndex_Library()
-  mus <- addrObj$getIndex_Museums()
-  rest <- 0
-  bath <- addrObj$getIndex_Badplats()
-  sports <- addrObj$getIndex_Sports()
+  ft_data <- data.frame(
+    # Name the components to the partial index
+    component = c("lib","mus","rest","bath","sports"),
+    # Long names of the components
+    longame = c("Avstånd, bibliotek (1)", "Avstånd, museer (3)","Avstånd, restauranger (5)","Avstånd, badplats (1)","Avstånd, idrottsanläggning (3)"),
+    # Name the partial index which is composed of these components
+    partial_idx = "ft_idx",
+    # Find the values of the components
+    value = c(
+      addrObj$getIndex_Library(),
+      addrObj$getIndex_Museums(),
+      0,
+      addrObj$getIndex_Badplats(),
+      addrObj$getIndex_Sports()
+    ),
+    # Define the weights of the components
+    partial_weight = c(0.3,0.3,0,0.1,0.2),
+    is_partialindex = FALSE,
+    
+    stringsAsFactors = FALSE
+  )
   
-  ft_partial_weights <- c(0.3,0.3,0,0.1,0.2)
-  
-  # Calculate partial index from components
-  ft_ix <- sum(c(lib,mus,rest,bath,sports) * ft_partial_weights)
-  ft_wt <- 0.33
-  
+  indexdata <- rbind(indexdata, rbind(ft_data, c(
+    "ft_idx", "Fritidsindex","ft_idx", sum(ft_data$value*ft_data$partial_weight, na.rm=TRUE), 0.33, TRUE
+  )))
+
   ## Vardagsindex
-  # Index components (normalised)
-  pre <- addrObj$getIndex_Preschools()
-#   prim <- addrObj$getIndex_Primaryschools()
-#   high <- addrObj$getIndex_Highschools()
-  prim <- 0
-  high <- 0
-  frit <- addrObj$getIndex_Fritids()
-  fest <- addrObj$getIndex_Festlokal()
-  sjukh <- addrObj$getIndex_Sjukhus()
-  vc <- addrObj$getIndex_Highschools()
+  vd_data <- data.frame(
+    # Name the components to the partial index
+    component = c("pre","prim","high","frit","fest","sjukh","vc"),
+    # Long names of the components
+    longame = c("Avstånd, dagis (3)", "Avstånd, grundskola (3)","Avstånd, gymnasier (3)","Avstånd, fritids (1)","Avstånd, fest- och möteslokal (1)", "Avstånd, sjukhus (1)","Avstånd, vårdcentral (1)"),
+    # Name the partial index which is composed of these components
+    partial_idx = "vd_idx",
+    # Find the values of the components
+    value = c(
+      100, # Dagis
+      0, # Grundskola
+      0, # Gymnasium
+      addrObj$getIndex_Fritids(),
+      addrObj$getIndex_Festlokal(),
+      addrObj$getIndex_Sjukhus(),
+      addrObj$getIndex_Vardcentral()
+    ),
+    # Define the weights of the components
+    partial_weight = c(0,0,0,0.5,0.5,0,0),
+    is_partialindex = FALSE,
+    
+    stringsAsFactors = FALSE
+  )
   
-  vd_partial_weights <- c(0.3,0.3,0.3,0.05,0.05,0,0)
-  
-  # Calculate partial index from components
-  vd_ix <- sum(c(pre,prim,high,frit,fest,sjukh,vc) * vd_partial_weights)
-  vd_wt <- 0.34
+  indexdata <- rbind(indexdata,rbind(vd_data, c(
+    "vd_idx", "Vardagsindex", "vd_idx", sum(vd_data$value*vd_data$partial_weight, na.rm=TRUE), 0.34, TRUE
+  )))
   
   ## Calculate composite index
-  blki_weights <- c(0,0.33,0.33,0.34) # The sum of the weights must add upp to 1.0.
-  blki_partialindexes <- c(env_ix, rt_ix, ft_ix, vd_ix)
+  blki <- sum(
+    as.numeric(indexdata$partial_weight) * as.numeric(indexdata$value) * as.logical(indexdata$is_partialindex)
+  )
   
-  blki <- sum(blki_weights * blki_partialindexes)
-  
-  return(blki)
+  return(list(blki=blki, indexdata=indexdata))
 }

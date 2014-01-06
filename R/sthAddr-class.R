@@ -77,7 +77,7 @@ sthAddr <- setRefClass(
     	d[d$distance > 500, ]$distance <- 500
       index <- mean(((500 - d$distance) / 500) * d$quality / 100)
       
-      return(index)
+      return(max(0,index))
     },
     getIndex_Fritids = function(...) {
       # Get data
@@ -90,7 +90,7 @@ sthAddr <- setRefClass(
       
       index <- 100 - (mean(data$GeographicalDistance) / 1000) * 100
       
-      return(index)
+      return(max(0,index))
     },
     getIndex_Festlokal = function(...) {
       # Get data
@@ -103,18 +103,18 @@ sthAddr <- setRefClass(
       
       index <- 100 - (mean(data$GeographicalDistance) / 1000) * 100
       
-      return(index)
+      return(max(0,index))
     },
     getIndex_Sjukhus = function(...) {
       # Get data
       index <- 0      
-      return(index)
+      return(max(0,index))
     },
     getIndex_Vardcentral = function(...) {
       # Get data
       index <- 0
       
-      return(index)
+      return(max(0,index))
     },
     
     getIndex_Traveltime = function(...) {
@@ -123,7 +123,7 @@ sthAddr <- setRefClass(
             
       index <- 100 - (min(traveltime,90) / 90) * 100
       
-      return(index)
+      return(max(0,index))
     },
     
     getIndex_Library = function(...) {
@@ -137,7 +137,7 @@ sthAddr <- setRefClass(
       
       index <- 100 - (mean(data$GeographicalDistance) / 1000) * 100
       
-      return(index)
+      return(max(0,index))
     },
     getIndex_Museums = function(...) {
       # Get data
@@ -150,14 +150,14 @@ sthAddr <- setRefClass(
       
       index <- 100 - (mean(data$GeographicalDistance) / 4000) * 100
       
-      return(index)
+      return(max(0,index))
     },
     getIndex_Restaurants = function(...) {
       ## Placeholder function!
       index <- 0
 #       index <- 100 - (mean(data$GeographicalDistance) / 1000) * 100
       
-      return(index)
+      return(max(0,index))
     },
     getIndex_Badplats = function(...) {
       # Get data
@@ -170,7 +170,7 @@ sthAddr <- setRefClass(
       
       index <- 100 - (mean(data$GeographicalDistance) / 2000) * 100
       
-      return(index)
+      return(max(0,index))
     },
     getIndex_Sports = function(...) {
       # Get data
@@ -183,7 +183,7 @@ sthAddr <- setRefClass(
       
       index <- 100 - (mean(data$GeographicalDistance) / 2000) * 100
       
-      return(index)
+      return(max(0,index))
     }
   )
 )
