@@ -1,8 +1,1 @@
-<%=
-library(projectX)
-library(LvWS)
-a <- sthAddr("{{street}}", "{{number}}") 
-x <- a$address
-%>
-
-Gatan ligger i <%= x$Municipality %> och har postnummer <%= x$PostalCode %>.
+Gatan ligger i <%= obj$address$Municipality %> och har postnummer <%= obj$address$PostalCode %>.

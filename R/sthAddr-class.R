@@ -19,7 +19,6 @@ sthAddr <- setRefClass(
       
     },
     getAddress = function(street, number) {
-      #browser()
       addresses <- OpenSth::GetAddresses(streetName=street, streetNumPattern=number)
       if (nrow(addresses) == 0){
       	addresses <- OpenSth::GetAddresses(streetName=street, 
@@ -39,6 +38,15 @@ sthAddr <- setRefClass(
     },
     getParkingPlaces = function() {
       lvws_get_parking_places(streetName = .self$address$StreetName)
+    },
+    getClosestSchools = function(n = 10) {
+      x <- GetNearestServiceUnit(7, .self$RT90, n = n)
+      x <- extractUnitData(x)
+      x$distance <- sapply(1:nrow(x), function(i) {
+        GetRTDistance(.self$RT90, c(x[i,"RT90.northing"], x[i,"RT90.easting"]))
+      })
+      rownames(x) <- NULL
+      return(x)
     }
   )
 )

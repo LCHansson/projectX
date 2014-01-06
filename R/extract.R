@@ -27,7 +27,7 @@ extractUnitData <- function(unitList) {
     obj <- unitList[[i]]
     
     # Get arrtibute data
-    attributes <- list_to_table(obj$Attributes)
+    attributes <- OpenSth:::list_to_table(obj$Attributes)
     
     # Get address
     addr <- as.character(attributes[attributes$Id == "StreetAddress","Value"])
