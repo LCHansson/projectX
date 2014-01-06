@@ -73,7 +73,7 @@ Vi har just nu: Närhet till skolor och dagis; kvalitetsnyckeltal för skolor; n
 | ------ | ------------- | ---- |
 | Avstånd till närmaste grundskola (m) | 100 - (avst/1000)*100 | 0.15 |
 | Avstånd till närmaste gymnasium (m) | 100 - (avst/3000)*100 | 0.15 |
-| Snittavstånd till tre närmaste dagis (m) | 100 - (avst/500)*100 | 0.15 |
+| Medel avstånd och omdöme för tre närmaste dagis (m) | mean(((500 - avstånd) / 500) * rekommendation / 100) | 0.15 |
 | Avstånd till närmaste fritids (m) | 100 - (avst/1000)*100 | 0.05 |
 | Avstånd till närmaste fest- och möteslokal (m) | 100 - (avst/1000)*100 | 0.05 |
 | Avstånd till närmaste sjukhus (m) | 100 - (avst/3000)*100 | 0.2 |
