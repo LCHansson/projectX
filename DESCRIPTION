@@ -12,4 +12,5 @@ Depends:
     XML,
     RJSONIO,
     plyr,
-    OpenSth
+    OpenSth,
+    rSL
