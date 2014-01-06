@@ -21,14 +21,14 @@ sthAddr <- setRefClass(
     getAddress = function(street, number) {
       addresses <- OpenSth::GetAddresses(streetName=street, streetNumPattern=number)
       if (nrow(addresses) == 0){
-      	addresses <- OpenSth::GetAddresses(streetName=street, 
-      									streetNumPattern=ifelse(class(number) %in% c("integer","double", "numeric"), 
-      															number-1, 
-      															"*"))
+        addresses <- OpenSth::GetAddresses(streetName=street, 
+                                           streetNumPattern=ifelse(class(number) %in% c("integer","double", "numeric"), 
+                                                                   number-1, 
+                                                                   "*"))
       }
       
       if (nrow(addresses) == 0){
-      	addresses <- OpenSth::GetAddresses(streetName=street, streetNumPattern="*")
+        addresses <- OpenSth::GetAddresses(streetName=street, streetNumPattern="*")
       }
       return(addresses[1,])
     },
@@ -49,51 +49,53 @@ sthAddr <- setRefClass(
       return(x)
     },
     getIndex_Preschools = function(year = 2013, ...) {
-    	
-    	data <- GetNearestServiceUnit(1, .self$RT90, ...)
-    	
-    	# TODO: Later on we can skip the step below,
-    	# 	when we know which variables to use
-    	data <- data[, c(
-    		# Info
-    		"Id",
-    		"Name",
-    		"Attributes.ContactPersonEmailAddress.Value",
-    		"Attributes.ContactPersonName.Value",
-    		"Attributes.EmailAddress.Value",
-    		"Attributes.Description.Value",
-    		"Attributes.ShortDescription.Value",
-    		"Attributes.OrganizationalForm.Value",
-    		"Attributes.PostalCode.Value",
-    		"Attributes.StreetAddress.Value",
-    		"Attributes.Url.Value",
-    		"GeographicalAreas.Name",
-    		
-    		# Measures
-    		atr("Attributes.PreSchoolNumberOfChildrenPerYearWorker"),
-    		atr("Attributes.PreSchoolNumberOfChildren"),
-    		atr("Attributes.PreSchoolShareOfTeachersWithUniversityEducation"),
-    		atr("Attributes.SvarsFrekvensForskola%s", year),
-    		atr("Attributes.PreschoolForm%sCuriosity", year),
-    		atr("Attributes.PreschoolForm%sSafety", year),
-    		atr("Attributes.PreschoolForm%sSocial", year),
-    		atr("Attributes.PreschoolForm%sResponsibility", year),
-    		atr("Attributes.PreschoolForm%sAspects", year),
-    		atr("Attributes.PreschoolForm%sHappiness", year),
-    		atr("Attributes.PreschoolForm%sRecommendation", year),
-    		atr("Attributes.PreschoolForm%santalSvarande", year)
-    	)]
       
-    	# Add distance
-    	#       data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
-    	#     	  GetRTDistance(.self$RT90, c(data[i,"RT90.northing"], data[i,"RT90.easting"]))
-    	#     	})
+      data <- GetNearestServiceUnit(1, .self$RT90, ...)
+      
+      # TODO: Later on we can skip the step below,
+      # 	when we know which variables to use
+      data <- data[, c(
+        # Info
+        "Id",
+        "Name",
+        "Attributes.ContactPersonEmailAddress.Value",
+        "Attributes.ContactPersonName.Value",
+        "Attributes.EmailAddress.Value",
+        "Attributes.Description.Value",
+        "Attributes.ShortDescription.Value",
+        "Attributes.OrganizationalForm.Value",
+        "Attributes.PostalCode.Value",
+        "Attributes.StreetAddress.Value",
+        "Attributes.Url.Value",
+        "GeographicalAreas.Name",
+        
+        # Measures
+        atr("Attributes.PreSchoolNumberOfChildrenPerYearWorker"),
+        atr("Attributes.PreSchoolNumberOfChildren"),
+        atr("Attributes.PreSchoolShareOfTeachersWithUniversityEducation"),
+        atr("Attributes.SvarsFrekvensForskola%s", year),
+        atr("Attributes.PreschoolForm%sCuriosity", year),
+        atr("Attributes.PreschoolForm%sSafety", year),
+        atr("Attributes.PreschoolForm%sSocial", year),
+        atr("Attributes.PreschoolForm%sResponsibility", year),
+        atr("Attributes.PreschoolForm%sAspects", year),
+        atr("Attributes.PreschoolForm%sHappiness", year),
+        atr("Attributes.PreschoolForm%sRecommendation", year),
+        atr("Attributes.PreschoolForm%santalSvarande", year)
+      )]
+      
+      # Add distance
+      #       data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
+      #     	  GetRTDistance(.self$RT90, c(data[i,"RT90.northing"], data[i,"RT90.easting"]))
+      #     	})
       
       # TODO: compute stuff
       
       index <- list(
         distance = 59,
-        quality = 37
+        quality = 37,
+        cost = NULL,
+        quantity = NULL
       )
       
       return(index)
@@ -107,9 +109,7 @@ sthAddr <- setRefClass(
         GetRTDistance(.self$RT90, c(data[i,"GeographicalPosition.X"], data[i,"GeographicalPosition.Y"]))
       })
       
-      index <- list(
-        distance = distance
-      )
+      index <- 
       
       return(index)
     }
