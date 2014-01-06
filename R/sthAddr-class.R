@@ -109,7 +109,7 @@ sthAddr <- setRefClass(
         GetRTDistance(.self$RT90, c(as.integer(data[i,"GeographicalPosition.X"]), as.integer(data[i,"GeographicalPosition.Y"])))
       })
       
-      index <- mean(data$GeographicalDistance)
+      index <- 100 - (mean(data$GeographicalDistance) / 1000) * 100
       
       return(index)
     },
@@ -122,13 +122,15 @@ sthAddr <- setRefClass(
         GetRTDistance(.self$RT90, c(as.integer(data[i,"GeographicalPosition.X"]), as.integer(data[i,"GeographicalPosition.Y"])))
       })
       
-      index <- mean(data$GeographicalDistance)
+      index <- 100 - (mean(data$GeographicalDistance) / 4000) * 100
       
       return(index)
     },
     getIndex_Restaurants = function(...) {
       ## Placeholder function!
       index <- 0
+#       index <- 100 - (mean(data$GeographicalDistance) / 1000) * 100
+      
       return(index)
     },
     getIndex_Badplats = function(...) {
@@ -140,7 +142,7 @@ sthAddr <- setRefClass(
         GetRTDistance(.self$RT90, c(as.integer(data[i,"GeographicalPosition.X"]), as.integer(data[i,"GeographicalPosition.Y"])))
       })
       
-      index <- mean(data$GeographicalDistance)
+      index <- 100 - (mean(data$GeographicalDistance) / 2000) * 100
       
       return(index)
     },
@@ -153,7 +155,7 @@ sthAddr <- setRefClass(
         GetRTDistance(.self$RT90, c(as.integer(data[i,"GeographicalPosition.X"]), as.integer(data[i,"GeographicalPosition.Y"])))
       })
       
-      index <- mean(data$GeographicalDistance)
+      index <- 100 - (mean(data$GeographicalDistance) / 2000) * 100
       
       return(index)
     }
