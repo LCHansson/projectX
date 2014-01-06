@@ -50,7 +50,9 @@ Vi har just nu: Närhet till museer och andra kulturinrättningar
 | Avstånd till närmaste bibliotek (m) |  | 0. |
 | Snittavstånd till tre närmaste museer (m) |  | 0. |
 | Snittavstånd till fem närmaste restauranger (m) |  | 0 |
-| Avstånd till närmaste badplats |  | 0. |
+| Avstånd till närmaste badplats (m) |  | 0. |
+| Snittavstånd till tre närmaste <br> idrottsanläggningar av valfritt slag (m) |  | 0. |
+
 
 
 ### 4 - Vardagsindex
@@ -66,7 +68,10 @@ Vi har just nu: Närhet till skolor och dagis; kvalitetsnyckeltal för skolor; n
 | Avstånd till närmaste gymnasium (m) |  | 0. |
 | Snittavstånd till tre närmaste dagis (m) |  | 0. |
 | Avstånd till närmaste fritids (m) |  | 0 |
-| Avstånd till närmaste båtplats |  | 0. |
+| Avstånd till närmaste fest- och möteslokal (m) |  | 0. |
+| Avstånd till närmaste sjukhus (m) |  | 0. |
+| Avstånd till närmaste vårdcentral (m) |  | 0. |
+
 
 ### 5 - Andra index
 Övriga index som kan vara av intresse.
