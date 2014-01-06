@@ -50,11 +50,11 @@ sthAddr <- setRefClass(
     },
     getPreschoolsData = function(year = 2013, ...) {
     	
-    	x <- GetNearestServiceUnit(1, .self$RT90, ...)
+    	data <- GetNearestServiceUnit(1, .self$RT90, ...)
     	
     	# TODO: Later on we can skip the step below,
     	# 	when we know which variables to use
-    	x <- x[, c(
+    	data <- data[, c(
     		# Info
     		"Id",
     		"Name",
@@ -83,7 +83,13 @@ sthAddr <- setRefClass(
     		atr("Attributes.PreschoolForm%sRecommendation", year),
     		atr("Attributes.PreschoolForm%santalSvarande", year)
     	)]
-    	return(x)
+      
+      # Add distance
+#     	data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
+#     	  GetRTDistance(.self$RT90, c(data[i,"RT90.northing"], data[i,"RT90.easting"]))
+#     	})
+      
+    	return(data)
     }
   )
 )
