@@ -54,9 +54,9 @@ Vi har just nu: Närhet till museer och andra kulturinrättningar
 
 | Faktor | Normalisering | Vikt |
 | ------ | ------------- | ---- |
-| Avstånd till närmaste bibliotek (m) | 100 - (avst/1000)*100 | 0.2 |
-| Snittavstånd till tre närmaste museer (m) | 100 - (avst/4000)*100 | 0.2 |
-| Snittavstånd till fem närmaste restauranger (m) | 100 - (avst/1000)*100 | 0.3 |
+| Avstånd till närmaste bibliotek (m) | 100 - (avst/1000)*100 | 0.3 |
+| Snittavstånd till tre närmaste museer (m) | 100 - (avst/4000)*100 | 0.3 |
+| Snittavstånd till fem närmaste restauranger (m) | 100 - (avst/1000)*100 | 0 |
 | Avstånd till närmaste badplats (m) | 100 - (avst/2000)*100 | 0.1 |
 | Snittavstånd till tre närmaste <br> idrottsanläggningar av valfritt slag (m) | 100 - (avst/2000)*100 | 0.2 |
 
@@ -71,13 +71,13 @@ Vi har just nu: Närhet till skolor och dagis; kvalitetsnyckeltal för skolor; n
 
 | Faktor | Normalisering | Vikt |
 | ------ | ------------- | ---- |
-| Avstånd till närmaste grundskola (m) | 100 - (avst/1000)*100 | 0.15 |
-| Avstånd till närmaste gymnasium (m) | 100 - (avst/3000)*100 | 0.15 |
-| Snittavstånd till tre närmaste dagis (m) | 100 - (avst/500)*100 | 0.15 |
+| Avstånd till närmaste grundskola (m) | 100 - (avst/1000)*100 | 0.3 |
+| Avstånd till närmaste gymnasium (m) | 100 - (avst/3000)*100 | 0.3 |
+| Snittavstånd till tre närmaste dagis (m) | 100 - (avst/500)*100 | 0.3 |
 | Avstånd till närmaste fritids (m) | 100 - (avst/1000)*100 | 0.05 |
 | Avstånd till närmaste fest- och möteslokal (m) | 100 - (avst/1000)*100 | 0.05 |
-| Avstånd till närmaste sjukhus (m) | 100 - (avst/3000)*100 | 0.2 |
-| Avstånd till närmaste vårdcentral (m) | 100 - (avst/1000)*100 | 0.2 |
+| Avstånd till närmaste sjukhus (m) | 100 - (avst/3000)*100 | 0 |
+| Avstånd till närmaste vårdcentral (m) | 100 - (avst/1000)*100 | 0 |
 
 
 ### 5 - Andra index
