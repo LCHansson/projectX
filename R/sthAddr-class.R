@@ -92,8 +92,23 @@ sthAddr <- setRefClass(
       # TODO: compute stuff
       
       index <- list(
-        distance = 59
-        quality = 37,
+        distance = 59,
+        quality = 37
+      )
+      
+      return(index)
+    },
+    getIndex_Library <- function(...) {
+      # Get data
+      data <- GetNearestServiceUnit("9ff1c3b5-f2e9-45b4-a478-caa09d923417", .self$RT90, n=1, groups=FALSE)
+      
+      # Get distance
+      data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
+        GetRTDistance(.self$RT90, c(data[i,"GeographicalPosition.X"], data[i,"GeographicalPosition.Y"]))
+      })
+      
+      index <- list(
+        distance = distance
       )
       
       return(index)
