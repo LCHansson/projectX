@@ -33,7 +33,9 @@ Vi har just nu: Restider med SL:s reseplanerare, antal byten för en resa, gång
 
 | Faktor | Normalisering | Vikt |
 | ------ | ------------- | ---- |
-| Beräknad restid till T-Centralen | 0-10: 100 <br> 10-15: 75 <br> 15-20: 50 <br> 20-40: 25 <br> 40+: 0 | 1 |
+| Beräknad restid till T-Centralen | 0-10: 100 <br> 10-15: 75 <br> 15-20: 50 <br> 20-40: 25 <br> 40+: 0 | 0.8 |
+| Avstånd till närmaste parkeringsplats (m) |  | 0.2 |
+
 
 
 ### 3 - Fritidsindex
@@ -43,12 +45,28 @@ Vi har just nu: Närhet till museer och andra kulturinrättningar
 
 **Beräkning och normalisering**
 
+| Faktor | Normalisering | Vikt |
+| ------ | ------------- | ---- |
+| Avstånd till närmaste bibliotek (m) |  | 0. |
+| Snittavstånd till tre närmaste museer (m) |  | 0. |
+| Snittavstånd till fem närmaste restauranger (m) |  | 0 |
+| Avstånd till närmaste badplats |  | 0. |
 
 
 ### 4 - Vardagsindex
 Beskrivning: Faktorer som är viktiga för vardagslivet. Detta kan vara närhet till olika barn- och ungdomsfaciliteter (dagis, skolor, fritids) eller sjukvård (vårdcentraler/sjukhus), 
 
-Vi har just nu: Närhet till skolor och dagis; kvalitetsnyckeltal för skolor; 
+Vi har just nu: Närhet till skolor och dagis; kvalitetsnyckeltal för skolor; närhet till samlings- och festlokaler
+
+**Beräkning och normalisering**
+
+| Faktor | Normalisering | Vikt |
+| ------ | ------------- | ---- |
+| Avstånd till närmaste grundskola (m) |  | 0. |
+| Avstånd till närmaste gymnasium (m) |  | 0. |
+| Snittavstånd till tre närmaste dagis (m) |  | 0. |
+| Avstånd till närmaste fritids (m) |  | 0 |
+| Avstånd till närmaste båtplats |  | 0. |
 
 ### 5 - Andra index
 Övriga index som kan vara av intresse.
