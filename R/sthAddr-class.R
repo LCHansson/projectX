@@ -94,6 +94,8 @@ sthAddr <- setRefClass(
       index <- list(
         distance = 59
         quality = 37,
+        cost = NULL,
+        quantity = NULL
       )
       
       return(index)
