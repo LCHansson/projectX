@@ -38,8 +38,10 @@ blki <- function(addrObj) {
   ## Vardagsindex
   # Index components (normalised)
   pre <- addrObj$getIndex_Preschools()
-  prim <- addrObj$getIndex_Primaryschools()
-  high <- addrObj$getIndex_Highschools()
+#   prim <- addrObj$getIndex_Primaryschools()
+#   high <- addrObj$getIndex_Highschools()
+  prim <- 0
+  high <- 0
   frit <- addrObj$getIndex_Fritids()
   fest <- addrObj$getIndex_Festlokal()
   sjukh <- addrObj$getIndex_Sjukhus()
