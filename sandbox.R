@@ -1,9 +1,20 @@
 require(OpenSth)
 require(rSL)
+require(projectX)
+
+#### EXEMPEL: Beräkna BLKI(tm) för olika adresser ####
+jag <- sthAddr("Erkenskroken",24)
+a1 <- sthAddr("Sveavägen",10)
+a2 <- sthAddr("fiskmåsvägen",20)
+
+blki(jag) # Indexvärde för en adress i närförord
+blki(a1) # Indexvärde för en adress i innerstan
+blki(a2) # Indexvärde för en adressi ytterförort
+
 
 #### EXEMPEL: Datamining i Stockholms enhets-API ####
 ## Skapa ett adressobjekt
-jag <- sthAddr("Erkenskroken", 24)
+jag <- sthAddr("Fiskmåsvägen", 20)
 
 ## Hämta data om närmaste enheter ur Stockholms Enhets-API
 # Enheter i enhets-API:t kan hämtas ut på många sätt. Nedan söker vi ut enheter baserat på ett av följande kriterier:
@@ -24,21 +35,23 @@ closestLeisure <- GetNearestServiceUnit(2, jag$RT90)
 closestPrimarySchools <- GetNearestServiceUnit("61c1cc6e-99bf-409a-85ca-4e3d0c137d5f", jag$RT90, n=10, groups=FALSE)
 closestPrimarySchools <- GetNearestServiceUnit("61c1cc6e-99bf-409a-85ca-4e3d0c137d5f", jag$RT90, n=10, groups=FALSE)
 
-
-## Get tidy unit data 
-a <- extractUnitData(closestCulture)
-b <- extractUnitData(closestPrimarySchools)
-allthedata <- rbind(a,b)
-
+closestLibraries <- GetNearestServiceUnit("9ff1c3b5-f2e9-45b4-a478-caa09d923417", jag$RT90, n=10, groups=FALSE)
+closestMuseums <- GetNearestServiceUnit("ad53d167-dba4-4000-b9b0-89380b89e831", jag$RT90, n=10, groups=FALSE)
+closestArtGalleries <- GetNearestServiceUnit("fd27590d-11ad-4811-9327-13e5a9fe9794", jag$RT90, n=10, groups=FALSE)
 
 # Mät avståndet (i meter) från min adress till nåon enhet i datasetet
-i <- 51; GetRTDistance(jag$RT90, c(allthedata[i,"RT90.northing"], allthedata[i,"RT90.easting"]))
+i <- 2; GetRTDistance(jag$RT90, c(closestLibraries[i,"GeographicalPosition.Y"], closestLibraries[i,"GeographicalPosition.X"]))
+
 
 
 #### EXEMPEL: Restider från en gatuadress till T-Centralen ####
-jag <- sthAddr("Sveavägen", 126)
+jag <- sthAddr("Fiskmåsvägen", 20)
 
-snittrestid <- travelTimeFromPos(jag$WGS84)
+# Hitta snittrestid till T-Centralen, kl. 12:00, idag
+travelTimeFromPos(jag$WGS84)
+
+# Hitta snittrestider för T-Centralen, Slussen, Odenplan
+snittrestid <- travelTimeFromPos(jag$WGS84, destinations = c(9001, 9192, 9117), Time = "18:00", Date = "09.01.2014")
 
 
 #### TESTKOD ####
