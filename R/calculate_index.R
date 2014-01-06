@@ -16,12 +16,12 @@ blki <- function(street, number) {
   rt_ix <- normalizeTravelTime(traveltime)
   
   # 3. Fritidsindex: FT_IX
-  leisuredata <- someData
+  leisuredata <- getLeisureData(address)
   
   ft_ix <- normalizeLeisureData(leisuredata)
   
   # 4. Vardagsindex: VD_IX
-  vardagdata <- someData
+  vardagdata <- getVardagData(address)
   
   vd_ix <- normalizeVardagData(vardagdata)
   
