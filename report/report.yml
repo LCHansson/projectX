@@ -1,0 +1,11 @@
+tex:
+  template: report/report.template.tex
+evalsOptions:
+  - graph.output: pdf
+  - graph.unify: true
+  - cache: false
+panderOptions:
+  - graph.background: white
+  - graph.grid: false
+  - graph.grid.minor: false
+  - graph.legend.position: bottom
