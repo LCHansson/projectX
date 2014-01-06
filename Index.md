@@ -28,11 +28,7 @@ Vi har just nu: ???
 
 | Faktor | Normalisering | Vikt |
 | ------ | ------------- | ---- |
-| Avstånd till närmaste bibliotek (m) |  | 0.2 |
-| Snittavstånd till tre närmaste museer (m) |  | 0.2 |
-| Antal restauranger inom 500m omkrets  |  | 0.3 |
-| Avstånd till närmaste badplats (m) |  | 0.1 |
-| Snittavstånd till tre närmaste <br> idrottsanläggningar av valfritt slag (m) |  | 0.2 |
+| | | |
 
 
 ### 2 - Restidsindex
