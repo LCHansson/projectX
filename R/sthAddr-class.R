@@ -100,6 +100,15 @@ sthAddr <- setRefClass(
       
       return(index)
     },
+    
+    getIndex_Traveltime = function(...) {
+      # Get data
+      traveltime <- travelTimeFromPos(.self$WGS84)
+            
+      index <- 100 - (min(traveltime,90) / 90) * 100
+      
+      return(index)
+    },
     getIndex_Library = function(...) {
       # Get data
       data <- GetNearestServiceUnit("9ff1c3b5-f2e9-45b4-a478-caa09d923417", .self$RT90, n=1, groups=FALSE)
