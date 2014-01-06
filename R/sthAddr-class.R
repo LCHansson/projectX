@@ -100,16 +100,60 @@ sthAddr <- setRefClass(
       
       return(index)
     },
-    getIndex_Library <- function(...) {
+    getIndex_Library = function(...) {
       # Get data
       data <- GetNearestServiceUnit("9ff1c3b5-f2e9-45b4-a478-caa09d923417", .self$RT90, n=1, groups=FALSE)
       
       # Get distance
       data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
-        GetRTDistance(.self$RT90, c(data[i,"GeographicalPosition.X"], data[i,"GeographicalPosition.Y"]))
+        GetRTDistance(.self$RT90, c(as.integer(data[i,"GeographicalPosition.X"]), as.integer(data[i,"GeographicalPosition.Y"])))
       })
       
-      index <- 
+      index <- mean(data$GeographicalDistance)
+      
+      return(index)
+    },
+    getIndex_Museums = function(...) {
+      # Get data
+      data <- GetNearestServiceUnit("ad53d167-dba4-4000-b9b0-89380b89e831", .self$RT90, n=3, groups=FALSE)
+      
+      # Get distance
+      data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
+        GetRTDistance(.self$RT90, c(as.integer(data[i,"GeographicalPosition.X"]), as.integer(data[i,"GeographicalPosition.Y"])))
+      })
+      
+      index <- mean(data$GeographicalDistance)
+      
+      return(index)
+    },
+    getIndex_Restaurants = function(...) {
+      ## Placeholder function!
+      index <- 0
+      return(index)
+    },
+    getIndex_Badplats = function(...) {
+      # Get data
+      data <- GetNearestServiceUnit("c1aca600-af0c-43f9-bf6c-cd7b4ec4b2d1", .self$RT90, n=1, groups=FALSE)
+      
+      # Get distance
+      data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
+        GetRTDistance(.self$RT90, c(as.integer(data[i,"GeographicalPosition.X"]), as.integer(data[i,"GeographicalPosition.Y"])))
+      })
+      
+      index <- mean(data$GeographicalDistance)
+      
+      return(index)
+    },
+    getIndex_Sports = function(...) {
+      # Get data
+      data <- GetNearestServiceUnit(3, .self$RT90, n=3)
+      
+      # Get distance
+      data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
+        GetRTDistance(.self$RT90, c(as.integer(data[i,"GeographicalPosition.X"]), as.integer(data[i,"GeographicalPosition.Y"])))
+      })
+      
+      index <- mean(data$GeographicalDistance)
       
       return(index)
     }
