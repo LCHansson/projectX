@@ -48,7 +48,7 @@ sthAddr <- setRefClass(
       rownames(x) <- NULL
       return(x)
     },
-    getPreschoolsData = function(year = 2013, ...) {
+    getIndex_Preschools = function(year = 2013, ...) {
     	
     	data <- GetNearestServiceUnit(1, .self$RT90, ...)
     	
@@ -84,12 +84,19 @@ sthAddr <- setRefClass(
     		atr("Attributes.PreschoolForm%santalSvarande", year)
     	)]
       
-      # Add distance
-#     	data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
-#     	  GetRTDistance(.self$RT90, c(data[i,"RT90.northing"], data[i,"RT90.easting"]))
-#     	})
+    	# Add distance
+    	#       data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
+    	#     	  GetRTDistance(.self$RT90, c(data[i,"RT90.northing"], data[i,"RT90.easting"]))
+    	#     	})
       
-    	return(data)
+      # TODO: compute stuff
+      
+      index <- list(
+        distance = 59
+        quality = 37,
+      )
+      
+      return(index)
     }
   )
 )
