@@ -30,8 +30,9 @@ Beskrivning: Restider till centrala platser i Stockholm med SL, bil och ev. andr
 Vi har just nu: Restider med SL:s reseplanerare, antal byten för en resa, gångtid till hållplats från adress
 
 **Beräkning och normalisering**
+
 | Faktor | Normalisering | Vikt |
-|--------|---------------|------|
+| ------ | ------------- | ---- |
 | Beräknad restid till T-Centralen | 0-10: 100 <br> 10-15: 75 <br> 15-20: 50 <br> 20-40: 25 <br> 40+: 0 | 1 |
 
 
@@ -41,9 +42,7 @@ Beskrivning: Närhet till kultur, shopping, mat och annat.
 Vi har just nu: Närhet till museer och andra kulturinrättningar
 
 **Beräkning och normalisering**
-| Faktor | Normalisering | Vikt |
-|--------|---------------|------|
-| | | |
+
 
 
 ### 4 - Vardagsindex
