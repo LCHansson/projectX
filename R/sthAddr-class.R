@@ -48,55 +48,34 @@ sthAddr <- setRefClass(
       rownames(x) <- NULL
       return(x)
     },
-    getIndex_Preschools = function(year = 2013, ...) {
+    getIndex_Preschools = function() {
       
-      data <- GetNearestServiceUnit(1, .self$RT90, ...)
+      # Förskola: 1c21b680-5136-4b43-98e3-cca969d20760
+      # Familjedaghem: 3a8dadd5-e10c-415c-8b37-1a25729afffa
       
-      # TODO: Later on we can skip the step below,
-      # 	when we know which variables to use
-      data <- data[, c(
-        # Info
-        "Id",
-        "Name",
-        "Attributes.ContactPersonEmailAddress.Value",
-        "Attributes.ContactPersonName.Value",
-        "Attributes.EmailAddress.Value",
-        "Attributes.Description.Value",
-        "Attributes.ShortDescription.Value",
-        "Attributes.OrganizationalForm.Value",
-        "Attributes.PostalCode.Value",
-        "Attributes.StreetAddress.Value",
-        "Attributes.Url.Value",
-        "GeographicalAreas.Name",
-        
-        # Measures
-        atr("Attributes.PreSchoolNumberOfChildrenPerYearWorker"),
-        atr("Attributes.PreSchoolNumberOfChildren"),
-        atr("Attributes.PreSchoolShareOfTeachersWithUniversityEducation"),
-        atr("Attributes.SvarsFrekvensForskola%s", year),
-        atr("Attributes.PreschoolForm%sCuriosity", year),
-        atr("Attributes.PreschoolForm%sSafety", year),
-        atr("Attributes.PreschoolForm%sSocial", year),
-        atr("Attributes.PreschoolForm%sResponsibility", year),
-        atr("Attributes.PreschoolForm%sAspects", year),
-        atr("Attributes.PreschoolForm%sHappiness", year),
-        atr("Attributes.PreschoolForm%sRecommendation", year),
-        atr("Attributes.PreschoolForm%santalSvarande", year)
-      )]
+      # Get the 3 nearest preschools
+    	data <- GetNearestServiceUnit(1, .self$RT90, n = 3)
       
-      # Add distance
-      #       data$GeographicalDistance <- sapply(1:nrow(data), function(i) {
-      #     	  GetRTDistance(.self$RT90, c(data[i,"RT90.northing"], data[i,"RT90.easting"]))
-      #     	})
+    	# TODO: Later on we can skip the step below,
+    	# 	when we know which variables to use
+    	d <- data.frame(
+        x = as.integer(data$GeographicalPosition.X),
+        y = as.integer(data$GeographicalPosition.Y),
+    		quality = as.integer(data$Attributes.PreschoolForm2013Recommendation.Value)
+    	)
       
-      # TODO: compute stuff
+    	# Add distance
+      d$distance <- sapply(1:nrow(d), function(i) {
+    	  GetRTDistance(.self$RT90, c(
+          as.integer(d[i, "x"]),
+          as.integer(d[i, "y"])
+        ))
+    	})
       
-      index <- list(
-        distance = 59,
-        quality = 37,
-        cost = NULL,
-        quantity = NULL
-      )
+      # Calculate index
+    	d[is.na(d$quality), ]$quality <- 75
+    	d[d$distance > 500, ]$distance <- 500
+      index <- mean(((500 - d$distance) / 500) * d$quality / 100)
       
       return(index)
     },
