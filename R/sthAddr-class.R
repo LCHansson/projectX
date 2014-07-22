@@ -27,7 +27,7 @@ sthAddr <- setRefClass(
                                                                    "*"))
       }
       
-      if (nrow(addresses) == 0){
+      if (nrow(addresses) == 0) {
         addresses <- OpenSth::GetAddresses(streetName=street, streetNumPattern="*")
       }
       return(addresses[1,])
@@ -72,12 +72,16 @@ sthAddr <- setRefClass(
         ))
     	})
       
-      # Calculate index
-    	d[is.na(d$quality), ]$quality <- 75
-    	d[d$distance > 500, ]$distance <- 500
-      index <- mean(((500 - d$distance) / 500) * d$quality / 100)
+      # Empty or too large values in the data are replaced with
+      # standardized/placeholder values
+      try(d[is.na(d$quality), ]$quality <- 75, silent = TRUE)
+    	try(d[d$distance > 500, ]$distance <- 500, silent = TRUE)
       
-      return(max(0,index))
+    	# Calculate index
+      # TODO: This index is obviously skewed and must be fixed.
+    	index <- mean(((500 - d$distance) / 500) * d$quality / 100)
+      
+      return(max(0, index))
     },
     getIndex_Fritids = function(...) {
       # Get data

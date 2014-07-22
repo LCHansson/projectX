@@ -73,7 +73,7 @@ blki <- function(addrObj) {
     partial_idx = "vd_idx",
     # Find the values of the components
     value = c(
-      100, # Dagis
+      addrObj$getIndex_Preschools(), # Dagis
       0, # Grundskola
       0, # Gymnasium
       addrObj$getIndex_Fritids(),
