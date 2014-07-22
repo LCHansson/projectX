@@ -3,34 +3,86 @@
 # Libraries
 require(dplyr)
 
-options(dplyr.show_sql = FALSE)
+options(dplyr.show_sql = TRUE)
 options(dplyr.explain_sql = FALSE)
 
-# Create sqlite DB
-bDB <- src_sqlite("bDB.sqlite", create = TRUE)
+## DB initialization
+bDB <- src_sqlite("DB/bDB.sqlite", create = TRUE)
 
 
-# Create tables for templating in the sql DB
+## Table creation ----
+
+## > address ----
 address <- data.frame(
-  Id = 1L,
-  Street_name = "Dummy",
-  Street_number = 0L,
-  Lat_rt90 = 0L,
-  Long_rt90 = 0L,
-  Lat_wgs84 = 0L,
-  Long_wgs84 = 0L,
-  Postal_code = 0L,
-  Postal_address = "Dummy",
-  Timestamp = Sys.time(),
+  Id = integer(0),
+  Street_name = character(0),
+  Street_number = integer(0),
+  Lat_rt90 = integer(0),
+  Long_rt90 = integer(0),
+  Lat_wgs84 = integer(0),
+  Long_wgs84 = integer(0),
+  Postal_code = integer(0),
+  Postal_address = character(0),
+  Timestamp = double(0),
   
   stringsAsFactors = FALSE
 )
 
+createDBTbl(bDB, address, key = "Id")
 
-address_tbl <- copy_to(bDB, data.frame(a), temporary = FALSE, index = list("Id"))
-a <- tbl(bDB, "addresses")
-
-
-dbSendQuery(conn = bDB$con, 
-            paste0("INSERT INTO address VALUES (", sqlString(row),")")
+## > obejct ----
+object <- data.frame(
+  Id = integer(0),
+  Object_type = character(0),
+  API_method = character(0),
+  API_id = character(0),
+  API_params = character(0),
+  Timestamp = double(0),
+  
+  stringsAsFactors = FALSE
 )
+
+createDBTbl(bDB, object, key = "Id")
+
+## > schools ----
+schools <- data.frame(
+  Id = integer(0),
+  Object_id = integer(0),
+  Object_type_id = integer(0),
+  Name = character(0),
+  Lat_rt90 = integer(0),
+  Long_rt90 = integer(0),
+  Lat_wgs84 = integer(0),
+  Long_wgs84 = integer(0),
+  Timestamp = double(0),
+  
+  stringsAsFactors = FALSE
+)
+
+createDBTbl(bDB, schools, key = "Id")
+
+## > traveltimes ----
+traveltimes <- data.frame(
+  Id = integer(0),
+  Address_id = integer(0),
+  Travel_time_Centralen = integer(0),
+  Stop_name = character(0),
+  Walking_time = integer(0),
+  Timestamp = double(0),
+  
+  stringsAsFactors = FALSE
+)
+
+createDBTbl(bDB, traveltimes, key = "Id")
+
+## > demographics ----
+demographics <- data.frame(
+  Id = integer(0),
+  Area_name = character(0),
+  XML_code = character(0),
+  Timestamp = double(0),
+  
+  stringsAsFactors = FALSE
+)
+
+createDBTbl(bDB, demographics, key = "Id")
