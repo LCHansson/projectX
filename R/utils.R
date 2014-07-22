@@ -26,6 +26,9 @@ sqlString <- function(vals) {
 #' @export
 
 createDBTbl <- function(conn, tbl, key = NULL) {
+  if ("src_sqlite" %in% class(conn))
+    conn <- conn$con
+  
   cols <- sapply(tbl, function(x) {
     name <- names(substitute(x))
     cls <- switch(
@@ -42,23 +45,27 @@ createDBTbl <- function(conn, tbl, key = NULL) {
     return(paste(x, cols[[x]], sep = " "))
   }), collapse = ", ")
   
-  string <- paste0('CREATE TABLE "', substitute(tbl), '"  (', colString, ')')
+  string <- paste0('CREATE TABLE IF NOT EXISTS "', substitute(tbl), '"  (', colString, ')')
   
   dbSendQuery(
     conn = conn,
     statement = string
   )
-  collapse(tbl)
+  invisible(collapse(tbl))
 }
 
 #' @export
-removeDBTbl <- function(conn, name) {
+dropDBTbl <- function(conn, name) {
+  if ("src_sqlite" %in% class(conn))
+    conn <- conn$con
+  
+  name <- as.character(substitute(name))
   string <- paste0('DROP TABLE IF EXISTS ', name)
   
-  dbSendQuery(
+  invisible(dbSendQuery(
     conn = conn,
     statement = string
-  )
+  ))
 }
 
 #' Insert rows at the bottom of a dplyr (local) tbl
@@ -159,9 +166,26 @@ insert <- function(tbl, row, conn, create_id = FALSE, idcol = NULL, return_tbl =
 
 #' NULL handler operator
 #' 
+#' Return the RHS statement if the LHS statement is identical to NULL. Otherwise, return LHS.
+#' 
 #' @export
 
 `%||%` <- function(a, b) {
   if (is.null(a)) return(b)
   a
+}
+
+#' "falsy" statement handler operator (similar to '||' in javaScript)
+#' 
+#' Return the RHS statement if the LHS statement is 'falsy', i.e. identical to NULL, NA, NaN, 0, "" or FALSE. This operator is more permissive than %||%, which only returns RHS if LHS is identical to, exactly, NULL. Use with caution.
+#' 
+#' @export
+
+`%|%` <- function(a, b) {
+  if (is.null(a)) return(b)
+  if (is.na(a)) return(b)
+  if (a == FALSE) return(b)
+  if (a == 0) return(b)
+  if (a == "") return(b)
+  b
 }
