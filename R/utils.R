@@ -30,7 +30,6 @@ createDBTbl <- function(conn, tbl, key = NULL) {
     conn <- conn$con
   
   cols <- sapply(tbl, function(x) {
-    name <- names(substitute(x))
     cls <- switch(
       class(x),
       "integer" = "INTEGER",
@@ -38,11 +37,15 @@ createDBTbl <- function(conn, tbl, key = NULL) {
       "character" = "TEXT",
       "BLOB")
     
-    return(c(name, cls))
+    return(c(cls))
   })
   
-  colString <- paste(sapply(names(cols), function(x) {
-    return(paste(x, cols[[x]], sep = " "))
+  colString <- paste(sapply(names(cols), function(name) {
+    type <- cols[[name]]
+    if (name %in% key)
+      type <- paste(type, "PRIMARY KEY ASC")
+    
+    return(paste(name, type, sep = " "))
   }), collapse = ", ")
   
   string <- paste0('CREATE TABLE IF NOT EXISTS "', substitute(tbl), '"  (', colString, ')')
