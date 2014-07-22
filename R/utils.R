@@ -21,12 +21,52 @@ sqlString <- function(vals) {
   )
 }
 
+#' Create an empty SQL table
+#' 
+#' @export
+
+createDBTbl <- function(conn, tbl, key = NULL) {
+  cols <- sapply(tbl, function(x) {
+    name <- names(substitute(x))
+    cls <- switch(
+      class(x),
+      "integer" = "INTEGER",
+      "numeric" = "REAL",
+      "character" = "TEXT",
+      "BLOB")
+    
+    return(c(name, cls))
+  })
+  
+  colString <- paste(sapply(names(cols), function(x) {
+    return(paste(x, cols[[x]], sep = " "))
+  }), collapse = ", ")
+  
+  string <- paste0('CREATE TABLE "', substitute(tbl), '"  (', colString, ')')
+  
+  dbSendQuery(
+    conn = conn,
+    statement = string
+  )
+  collapse(tbl)
+}
+
+#' @export
+removeDBTbl <- function(conn, name) {
+  string <- paste0('DROP TABLE IF EXISTS ', name)
+  
+  dbSendQuery(
+    conn = conn,
+    statement = string
+  )
+}
+
 #' Insert rows at the bottom of a dplyr (local) tbl
 #' 
 #' Insert one or several rows at the bottom of a dplyr tbl. The function can also automatically create a new ID for the item in question.
 #' @export
 
-insert <- function(tbl, row, create_id = FALSE, idcol = NULL, return_tbl = TRUE) {
+insert <- function(tbl, row, conn, create_id = FALSE, idcol = NULL, return_tbl = TRUE) {
   idcol <- idcol %||% "Id"
   if (!"tbl_sql" %in% class(tbl)) {
     tblnms <- names(tbl)
@@ -86,18 +126,31 @@ insert <- function(tbl, row, create_id = FALSE, idcol = NULL, return_tbl = TRUE)
     row[[idcol]] <- max_id + 1:unique(sapply(row, length))
   }
   
-  # Bind the row(s) to 
-  if (is.data.frame(row)) {
-    tbl <- rbind_all(list(tbl, row))
+  # If the data is a local tbl: Bind the row(s) to the data and return it
+  if (!"tbl_sql" %in% class(tbl)) {
+    if (is.data.frame(row)) {
+      tbl <- rbind_all(list(tbl, row))
+    } else {
+      tbl <- rbind(tbl, row)
+      if (ncol(tbl) > length(row))
+        warning("Elements in ROW outside the range of the TBL were dropped.")
+    }
+    
+    # Convert to a dplyr tbl_df
+    if (return_tbl) {
+      tbl <- tbl_df(tbl)
+    }
   } else {
-    tbl <- rbind(tbl, row)
-    if (ncol(tbl) > length(row))
-      warning("Elements in ROW outside the range of the TBL were dropped.")
-  }
-  
-  # Convert to a dplyr tbl_df
-  if (return_tbl) {
-    tbl <- tbl_df(tbl)
+    
+    # If the data is in a remote sql DB: pass an INSERT statement to
+    # the database
+    
+    dbSendQuery(
+      conn = conn,
+      statement = paste0("INSERT INTO ", as.character(tbl$from),
+                         " VALUES (", sqlString(row),")")
+    )
+    collapse(tbl)
   }
   
   return(tbl)
