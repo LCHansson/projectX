@@ -5,19 +5,41 @@ atr <- function(x, ...) {
 	paste(sprintf(x, ...), c("Name", "Value"), sep = ".")
 }
 
-#' Insert rows at the bottom of a dplyr tbl
+#' Create a string for SQL INSERTion
+#' @export
+
+sqlString <- function(vals) {
+  paste(
+    sapply(vals, function(val) {
+      if (is.numeric(val) | any(c("POSIXct", "POSIXlt") %in% class(val)))
+        return(val)
+      else
+        return(paste0("'", val, "'"))
+    }),
+    sep = "",
+    collapse = ", "
+  )
+}
+
+#' Insert rows at the bottom of a dplyr (local) tbl
 #' 
 #' Insert one or several rows at the bottom of a dplyr tbl. The function can also automatically create a new ID for the item in question.
 #' @export
 
 insert <- function(tbl, row, create_id = FALSE, idcol = NULL, return_tbl = TRUE) {
   idcol <- idcol %||% "Id"
+  if (!"tbl_sql" %in% class(tbl)) {
+    tblnms <- names(tbl)
+  } else {
+    tblnms <- names(collect(head(tbl)))
+  }
   
   # Error handling
   if (!is.null(names(row))) {
     # If ROW is named, check to see that the names match
     rownms <- names(row)
-    if (create_id) rownms <- append(rownms, idcol)
+    if (create_id)
+      rownms <- append(rownms, idcol)
     
     if (!identical(sort(names(tbl)), sort(rownms)))
       stop("The names of the TBL and the ROW are not identical.
@@ -51,7 +73,7 @@ insert <- function(tbl, row, create_id = FALSE, idcol = NULL, return_tbl = TRUE)
   # Create an index if none is supplied
   if (create_id) {
     # Error handling
-    if (!idcol %in% names(tbl)) {
+    if (!idcol %in% tblnms) {
       stop("The submitted IDCOL is not in the names of the TBL argument.")
     }
     
@@ -59,14 +81,14 @@ insert <- function(tbl, row, create_id = FALSE, idcol = NULL, return_tbl = TRUE)
     if (nrow(tbl) == 0) {
       max_id <- 0
     } else {
-      max_id <- max(tbl[[idcol]])
+      max_id <- max(collect(select(tbl, matches(idcol))))
     }
     row[[idcol]] <- max_id + 1:unique(sapply(row, length))
   }
   
   # Bind the row(s) to 
   if (is.data.frame(row)) {
-    tbl <- rbind_list(tbl, row)
+    tbl <- rbind_all(list(tbl, row))
   } else {
     tbl <- rbind(tbl, row)
     if (ncol(tbl) > length(row))
