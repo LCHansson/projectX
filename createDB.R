@@ -7,7 +7,7 @@ options(dplyr.show_sql = TRUE)
 options(dplyr.explain_sql = FALSE)
 
 ## DB initialization
-bDB <- src_sqlite("DB/bDB.sqlite", create = TRUE)
+bDB <- src_sqlite("Inst/DB/bDB.sqlite", create = TRUE)
 
 
 ## Table creation ----
