@@ -1,3 +1,5 @@
+## LVWS API METHODS ----
+
 #' Get XML from LvWS
 #' 
 #' Get XML data from the LvWS API.
@@ -154,6 +156,8 @@ GetCoords <- function(
   message("Coordinates generated on [northing, easting] form")
   return(coords)
 }
+
+## UNIT API METHODS ----
 
 #' Get JSON for schools
 #' 

@@ -19,16 +19,16 @@ sthAddr <- setRefClass(
       
     },
     getAddress = function(street, number) {
-      addresses <- OpenSth::GetAddresses(streetName=street, streetNumPattern=number)
+      addresses <- GetAddresses(streetName=street, streetNumPattern=number)
       if (nrow(addresses) == 0){
-        addresses <- OpenSth::GetAddresses(streetName=street, 
+        addresses <- GetAddresses(streetName=street, 
                                            streetNumPattern=ifelse(class(number) %in% c("integer","double", "numeric"), 
                                                                    number-1, 
                                                                    "*"))
       }
       
       if (nrow(addresses) == 0) {
-        addresses <- OpenSth::GetAddresses(streetName=street, streetNumPattern="*")
+        addresses <- GetAddresses(streetName=street, streetNumPattern="*")
       }
       return(addresses[1,])
     },

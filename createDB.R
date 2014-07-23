@@ -22,7 +22,8 @@ address <- data.frame(
   Lat_wgs84 = integer(0),
   Long_wgs84 = integer(0),
   Postal_code = integer(0),
-  Postal_address = character(0),
+  Postal_area = character(0),
+  Municipality = character(0),
   Timestamp = double(0),
   
   stringsAsFactors = FALSE
