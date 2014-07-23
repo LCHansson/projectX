@@ -11,6 +11,4 @@ Depends:
     httr,
     XML,
     RJSONIO,
-    plyr,
-    OpenSth,
-    rSL
+    plyr
