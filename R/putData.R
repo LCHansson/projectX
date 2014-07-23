@@ -43,5 +43,7 @@ putAddress <- function(
     select(-WKT) %>%
     mutate(Timestamp = Sys.time())
   
-  insert(address, addrList, conn, create_id = TRUE, idcol = "Id")
+  for (i in 1:nrow(addrList)) {
+    insert(address, addrList[i,], conn, create_id = TRUE, idcol = "Id")
+  }
 }
