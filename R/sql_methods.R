@@ -70,47 +70,14 @@ dropDBTbl <- function(conn, name) {
 #' @export
 
 insert <- function(tbl, row, conn, create_id = FALSE, idcol = NULL, return_tbl = TRUE) {
+  if ("src_sqlite" %in% class(conn))
+    conn <- conn$con
+  
   idcol <- idcol %||% "Id"
   if (!"tbl_sql" %in% class(tbl)) {
     tblnms <- names(tbl)
   } else {
-    tblnms <- names(collect(head(tbl)))
-  }
-  
-  # Error handling
-  if (!is.null(names(row))) {
-    # If ROW is named, check to see that the names match
-    rownms <- names(row)
-    if (create_id)
-      rownms <- append(rownms, idcol)
-    
-    if (!identical(sort(names(tbl)), sort(rownms)))
-      stop("The names of the TBL and the ROW are not identical.
-           Please change the names of the ROW argument or submit
-           a ROW argument without names.")
-  } else {
-    # If ROW is _not_ named, check that the length of the args matches.
-    rowlng <- length(row)
-    if (create_id) rowlng <- rowlng + 1
-    if (rowlng > ncol(tbl))
-      stop("The length of ROW is larger than the number of columns in TBL.")
-  }
-  
-  if (length(unique(sapply(row, length))) > 1)
-    stop("The number of elements in each supplied column in the ROW argument is not identical.")
-  
-  
-  # Convert vectors to lists to simplify data handling
-  if (is.vector(row))
-    row <- as.list(row)
-  
-  # Name handling: Name unnamed data
-  if (is.null(names(row))) {
-    nms <- names(tbl)
-    if (create_id) {
-      nms <- nms[!nms %in% idcol]
-    }
-    names(row) <- nms
+    tblnms <- names(collect(head(tbl, n = 1L)))
   }
   
   # Create an index if none is supplied
@@ -127,6 +94,33 @@ insert <- function(tbl, row, conn, create_id = FALSE, idcol = NULL, return_tbl =
       max_id <- max(collect(select(tbl, matches(idcol))))
     }
     row[[idcol]] <- max_id + 1:unique(sapply(row, length))
+  }
+  
+  if (!is.null(names(row))) {
+    # If ROW is named, check to see that the names match
+    row <- row[,tblnms]
+  } else {
+    # If ROW is _not_ named, check that the length of the args matches.
+    rowlng <- length(row)
+    if (create_id) rowlng <- rowlng + 1
+    if (rowlng > ncol(tbl))
+      stop("The length of ROW is larger than the number of columns in TBL.")
+  }
+  
+  if (length(unique(sapply(row, length))) > 1)
+    stop("The number of elements in each supplied column in the ROW argument is not identical.")
+  
+  # Convert vectors to lists to simplify data handling
+  if (is.vector(row))
+    row <- as.list(row)
+  
+  # Name handling: Name unnamed data
+  if (is.null(names(row))) {
+    nms <- names(tbl)
+    if (create_id) {
+      nms <- nms[!nms %in% idcol]
+    }
+    names(row) <- nms
   }
   
   # If the data is a local tbl: Bind the row(s) to the data and return it
