@@ -23,4 +23,9 @@
 # Manpages
 *.Rd
 
+# LaTeX stuff
+*.aux
+*.out
+*.synctex.gz
+*.log
 output.tex
